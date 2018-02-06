@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	button{
+		width:300px;
+		line-height:50px;
+		background-image:url(bottom.png);
+		background-repeat:no-repeat;
+		background-position:98%;
+		background-color:#f99;
+		border:none;
+		outline:none;
+		cursor:pointer;
+		color:#fff;
+		font-size:18px;
+		font-weight:bolder;
+	}
+	.ul{
+		display:none;
+		overflow:hidden;
+		border:1px solid #e3e3e3;
+		padding:10px;
+	}
+	ul li{
+		float:left;
+		padding:4px 4px;
+		border:1px solid #fff;
+		list-style:none;
+		margin-right:5px;
+		margin-bottom:10px;
+		cursor:pointer;
+	}
+	.wrap{
+		width:600px;
+		margin:100px auto;
+		font-size:16px;
+		color:#333;
+	}
+	button.show{
+	background-image:url(top.png);
+	}
+	li.selected{
+		border:1px solid #f66;
+	}
+	p{
+		font-size:16px;
+		color:skyblue;
+	}
+	.game{
+		width:300px;
+	}
+	</style>
+	<script src="jQuery.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<p>已选择：<span id="text"></span></p>
+	<div class="game">
+		<button>请选择</button>
+		<ul class="ul">
+			<li>魔兽世界</li>
+			<li>王者荣耀</li>
+			<li>英雄联盟</li>
+			<li>QQ飞车</li>
+			<li>绝地求生</li>
+			<li>地下城与勇士</li>
+			<li>贪玩蓝月</li>
+			<li>天涯明月刀</li>
+			<li>逆战</li>
+			<li>穿越火线</li>
+			<li>QQ三国</li>
+			<li>QQ炫舞</li>
+			<li>黑色沙漠</li>
+			<li>上古卷轴剑网3</li>
+			<li>九阴真经2</li>
+			<li>失落的方舟</li>
+			<li>MU</li>
+			<li>CS:GO</li>
+			<li>神武3</li>
+			<li>古剑OL</li>
+			<li>龙之谷</li>
+			<li>影武者</li>
+			<li>坦克世界</li>
+			<li>龙门虎将</li>
+			<li>笑傲江湖</li>
+			<li>灵山奇缘</li>
+		</ul>
+	</div>
+</div>
+<script>
+// 按钮单击事件
+$("button").click(function(){
+	$(".ul").slideToggle(1000);
+	$(this).toggleClass("show");
+});
+// 所有的li的单击事件
+$("li").click(function(){
+	//定义空数组，放所选li的内容
+	var textArr=[];
+	$(this).toggleClass("selected");
+	for(var i=0;i<$("li").length;i++){
+		if($("li")[i].className=="selected"){
+			textArr.push($("li")[i].innerHTML);
+			console.log(textArr)
+		}
+	}
+	// 根据数组长度判断是否选择
+	if(textArr.length){
+		$("#text").html(textArr.toString());
+	}else{
+		$("#text").html("请选择你喜欢的游戏，不少于一个")
+	}
+})
+</script>
+</body>
+</html>

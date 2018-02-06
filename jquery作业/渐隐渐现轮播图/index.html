@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style:none;
+		}
+		.pt{
+			width:1000px;
+			margin:50px auto;
+		}
+		.pt li{
+			display:none;
+		}
+		.pt .pt1{
+			display:block;
+		}
+		.pt{
+			position:relative;
+		}
+		.pt #pre,.pt #next{
+			position:absolute;
+			top:42%;
+			transition:all .4s;
+			opacity:.5;
+		}
+		.pt #pre{
+			left:10px;
+		}
+		.pt #next{
+			right:10px;
+		}
+		.pt #pre:hover,.pt #next:hover{
+			cursor:pointer;
+			opacity:1;
+			transform:scale(1.3);
+		}
+		.pt .yd{
+			position:absolute;
+			bottom:10px;
+			left:41%;
+		}
+		.pt .yd span{
+				display:inline-block;
+				height:20px;
+				margin-right:8px;
+				width:20px;
+				background:#fff;
+				border-radius:50%;
+		}
+		.pt .yd span:hover{
+			cursor:pointer;
+		}
+		.pt .yd span em{
+			display:none;
+		}
+		.pt .yd .ht{
+			background:skyblue;
+		}
+	</style>
+</head>
+<body>
+<div class="pt">
+	<ul>
+		<li class="pt1"><img src="images/7.jpg" alt=""></li>
+		<li><img src="images/8.jpg" alt=""></li>
+		<li><img src="images/9.jpg" alt=""></li>
+		<li><img src="images/10.jpg" alt=""></li>
+		<li><img src="images/11.jpg" alt=""></li>
+		<li><img src="images/12.jpg" alt=""></li>
+	</ul>
+	<img id="pre" src="images/1.png" alt="">
+	<img id="next" src="images/2.png" alt="">
+	<div class="yd">
+		<span class="ht"></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<script src="jQuery.js"></script>
+<script>
+var m=0;
+	// 向右
+	$("#next").click(function(){
+		for(var i=0;i<$("li").length;i++){
+			$("li").eq(i).hide();
+			$("span")[i].className="";			
+		}
+		if(m<$("li").length-1){
+			m++;	
+		}else{
+			m=0;
+		}
+		$("li").eq(m).fadeIn();
+		$("span")[m].className="ht";	
+	})
+// 向左
+	$("#pre").click(function(){
+		for(var i=0;i<$("li").length;i++){
+			$("li").eq(i).hide();
+			$("span")[i].className="";
+		}
+		if(m>0){
+			m--;	
+		}else{
+			m=$("li").length-1;
+		}
+		$("li").eq(m).fadeIn();
+		$("span")[m].className="ht";
+	})
+	// 原点点击事件
+	$("span").click(function(){
+	for(var i=0;i<$("span").length;i++){
+		// 设置参数，纪录当前圆点点的哪张图片
+			$("span")[i].setAttribute("index",i)
+	 		$("span")[i].className="";
+	 		$("li").eq(i).hide();
+	 	}
+	 	count =this.getAttribute("index");
+	 	m=count;
+	 	$("span")[m].className="ht";
+	 	$("li").eq(m).fadeIn();
+	 })
+</script>
+</body>
+</html>
