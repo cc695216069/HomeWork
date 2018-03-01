@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jQuery.js"></script>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	li{
+		list-style:none;
+		display:none;
+	}
+	a{
+		text-decoration:none;
+	}
+	.inner{
+		width:940px;
+		margin:100px auto;
+	}
+	.wrap{
+		width:600px;
+		overflow:hidden;
+	}
+	body{
+		background-image:url(images/colored_body_top2.png);
+	}
+	.img{
+		float:left;
+		margin-right:4px;
+		width:116px;
+		height:65px;
+		cursor:pointer;
+		position:relative;
+	}
+	.img img{
+		width:100%;
+		height:65px;
+	}
+	.dotList{
+		width:99999px;
+		padding-top:11px;
+	}
+	.xuankuang{
+		position:absolute;
+		left:0;
+		top:-11px;
+		width:116px;
+		height:77px;
+		background-image: url(images/xuanzhong.png);
+		background-repeat:no-repeat;
+	}
+	.drop{
+		margin-top:5px;
+		height:18px;
+		width:600px;
+		background-color:rgba(0,0,0,.4);
+		position:relative;
+		border-radius:3px;
+	}
+	.clear{
+		clear:both;
+	}
+	.prev,.next{
+		width:38px;
+		height:18px;
+		position:absolute;
+		top:0;
+		bottom:0;
+		background-color:rgba(35, 60, 81, 0.4 );
+		border-radius:3px;
+		cursor:pointer;
+	}
+	.prev{
+		left:0;
+	}
+	.next{
+		right:0;
+	}
+	.prev:hover,.next:hover{
+	background:linear-gradient(135deg, #3d6c8d 0%, #2e5470 100%);
+	}
+	.next span{
+		background-position: -9px -7px;
+	}
+	.prev span{
+		background-position: -18px -7px;
+	}
+	.drop span{
+		display:inline-block;
+		width:9px;
+		height:7px;
+		background-repeat:no-repeat;
+		background-image:url(images/icon_cluster_controls.png);
+		margin-left:15px;
+		margin-top:5px;
+	}
+	.scroll{
+		width:60px;
+		height:18px;
+		position:absolute;
+		top:0;
+		left:38px;
+		background-color:rgba(0,0,0,.2);
+		cursor:pointer;
+		border-radius:3px;
+	}
+	.scroll:hover{
+		background:linear-gradient(135deg, #3d6c8d 0%, #2e5470 100%);
+	}
+	</style>
+</head>
+<body>
+<div class="inner">
+	<ul>
+		<li style="display:block;"><a href="#"><img src="images/bannerXQ1.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ2.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ3.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ4.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ5.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ1.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ2.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ3.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ4.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ5.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ1.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ2.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ3.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ4.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ5.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ3.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ4.jpg" alt=""></a></li>
+		<li><a href="#"><img src="images/bannerXQ5.jpg" alt=""></a></li>
+	</ul>
+	<div class="wrap">
+		<div class="dotList">
+			<div class="img">
+				<span class="xuankuang"></span>
+				<img src="images/bannerXQ1.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ2.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ3.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ4.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ5.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ1.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ2.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ3.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ4.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ5.jpg" alt="">
+			</div>
+			<div class="img">
+				<span  ></span>
+				<img src="images/bannerXQ1.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ2.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ3.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ4.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ5.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ3.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ4.jpg" alt="">
+			</div>
+			<div class="img">
+				<span></span>
+				<img src="images/bannerXQ5.jpg" alt="">
+			</div>
+			<div class="clear"></div>	
+		</div>
+	</div>
+	<div class="drop">
+		<div class="prev">
+			<span></span>
+		</div>
+		<div class="next">
+			<span></span>
+		</div>
+		<div class="scroll" style="margin-left:0;"></div>
+	</div>
+</div>
+<script>
+	var imgList=$(".dotList");
+	var xuankuangList=imgList.find("span");
+	var m=0;/*记录当前所在的张数*/
+	var n=0;/*可视区域最左侧图片的下标*/
+	var sum=xuankuangList.length;/*纪录总张数*/
+	function xuankuangStatus(index){
+	xuankuangList.removeClass("xuankuang");
+	xuankuangList.eq(index).addClass("xuankuang");
+	}
+	function move(newIndex){
+	var r = sum - m;
+	var l = n;
+	if(r > 5){
+		imgList.animate({
+			"marginLeft":-m * 120 
+		});
+	}
+	else{
+		if(l !== sum - 5){
+			imgList.animate({
+				"marginLeft":-(sum - r - 1) * 120 
+			});
+		}
+	}
+	n = newIndex || m;
+}
+$(".next").click(function(){
+		++m;
+		if(m == sum){
+			m = 0;
+			move();
+		}
+		if(m == n + 5){
+			move() 
+		}
+		if(sum - m < 5){
+			move(sum - 5)	
+		}
+		xuankuangStatus(m);
+	})
+$(".prev").click(function(){
+	--m;
+	if(m == -1){
+		m = sum-1
+		move()
+	}
+	if(m < sum-5){
+		move()
+	}
+	xuankuangStatus(m);
+})
+/*滑块逻辑*/
+$(".scroll").mousedown(function(event){
+	var X=event.clientX;
+	var ml=parseInt(this.style.marginLeft);
+	var _this=this;
+	var countWidth=$(".scroll").parent().width()-$(".prev").width()-$(".next").width();
+	var scrollWidth=countWidth-$(".scroll").width();
+						// var body=$("body");
+						// body.onselectstart = function(){
+						// 	return false;
+						// }
+	window.onmousemove=function(event){
+		var x=event.clientX;
+		_this.style.marginLeft=x-X+ml+"px";
+		var Ml=parseInt(_this.style.marginLeft)
+		if( Ml < 0){
+			ml = _this.style.marginLeft
+		}
+		if(Ml>scrollWidth){
+			ml = scrollWidth + "px"
+		}
+		else{
+			_this.style.marginLeft = x - X + ml + "px";
+		}
+		var process = Math.round(Ml/scrollWidth * 100) / 100;
+		imgList.css({
+			marginLeft:-((sum*120 - 600) * process)
+			// console.log(sum*120);
+		})
+	}
+	window.onmouseup = function(){
+		window.onmousemove = null;
+	}
+})
+</script>
+</body>
+</html>

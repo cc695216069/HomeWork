@@ -89,11 +89,11 @@
 <script src="jQuery.js"></script>
 <script>
 var m=0;
-	// 向右
+	// 向右渐隐渐现
 	$("#next").click(function(){
 		for(var i=0;i<$("li").length;i++){
 			$("li").eq(i).hide();
-			$("span")[i].className="";			
+			$("span").eq(i).removeClass("ht");			
 		}
 		if(m<$("li").length-1){
 			m++;	
@@ -101,13 +101,13 @@ var m=0;
 			m=0;
 		}
 		$("li").eq(m).fadeIn();
-		$("span")[m].className="ht";	
+		$("span").eq(m).addClass("ht");	
 	})
-// 向左
+// 向左渐隐渐现
 	$("#pre").click(function(){
 		for(var i=0;i<$("li").length;i++){
 			$("li").eq(i).hide();
-			$("span")[i].className="";
+			$("span").eq(i).removeClass("ht");
 		}
 		if(m>0){
 			m--;	
@@ -115,19 +115,19 @@ var m=0;
 			m=$("li").length-1;
 		}
 		$("li").eq(m).fadeIn();
-		$("span")[m].className="ht";
+		$("span").eq(m).addClass("ht");
 	})
-	// 原点点击事件
+	// 原点点击渐隐渐现
 	$("span").click(function(){
 	for(var i=0;i<$("span").length;i++){
 		// 设置参数，纪录当前圆点点的哪张图片
 			$("span")[i].setAttribute("index",i)
-	 		$("span")[i].className="";
+	 		$("span").eq(i).removeClass("ht");
 	 		$("li").eq(i).hide();
 	 	}
 	 	count =this.getAttribute("index");
 	 	m=count;
-	 	$("span")[m].className="ht";
+	 	$("span").eq(m).addClass("ht");
 	 	$("li").eq(m).fadeIn();
 	 })
 </script>
