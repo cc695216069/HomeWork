@@ -113,8 +113,8 @@
 </head>
 <body>
 <div class="inner">
-	<ul>
-		<li style="display:block;"><a href="#"><img src="images/bannerXQ1.jpg" alt=""></a></li>
+	<ul class="banner">
+		<li style="display:block"><a href="#"><img src="images/bannerXQ1.jpg" alt=""></a></li>
 		<li><a href="#"><img src="images/bannerXQ2.jpg" alt=""></a></li>
 		<li><a href="#"><img src="images/bannerXQ3.jpg" alt=""></a></li>
 		<li><a href="#"><img src="images/bannerXQ4.jpg" alt=""></a></li>
@@ -237,12 +237,21 @@
 		imgList.animate({
 			"marginLeft":-m * 120 
 		});
+		percent = (m * 120 /(sum*120-600))
+		$(".scroll").animate({
+			marginleft : Math.round((scrollWidth)*percent) + "px"
+		})
 	}
 	else{
 		if(l !== sum - 5){
 			imgList.animate({
 				"marginLeft":-(sum - r - 1) * 120 
 			});
+			percent = ((count - 5) * 120 / (sum*120-600))
+
+			$(".scroll").animate({
+				marginLeft : Math.round((scrollWidth)*percent) + "px"
+			})
 		}
 	}
 	n = newIndex || m;
@@ -260,6 +269,7 @@ $(".next").click(function(){
 			move(sum - 5)	
 		}
 		xuankuangStatus(m);
+		console.log(m);
 	})
 $(".prev").click(function(){
 	--m;
@@ -267,8 +277,16 @@ $(".prev").click(function(){
 		m = sum-1
 		move()
 	}
-	if(m < sum-5){
+	if(m < sum-5&&m>5){
 		move()
+	}
+	if(m==4){
+		$(".imgList").animate({
+			"marginLeft": 0
+		});
+		$(".scroll").animate({
+			marginLeft : 0 + "px"
+		})
 	}
 	xuankuangStatus(m);
 })
@@ -279,10 +297,10 @@ $(".scroll").mousedown(function(event){
 	var _this=this;
 	var countWidth=$(".scroll").parent().width()-$(".prev").width()-$(".next").width();
 	var scrollWidth=countWidth-$(".scroll").width();
-						// var body=$("body");
-						// body.onselectstart = function(){
-						// 	return false;
-						// }
+	var body=$("body");
+	body.onselectstart = function(){
+		return false;
+	}
 	window.onmousemove=function(event){
 		var x=event.clientX;
 		_this.style.marginLeft=x-X+ml+"px";
@@ -299,12 +317,25 @@ $(".scroll").mousedown(function(event){
 		var process = Math.round(Ml/scrollWidth * 100) / 100;
 		imgList.css({
 			marginLeft:-((sum*120 - 600) * process)
-			// console.log(sum*120);
 		})
 	}
 	window.onmouseup = function(){
 		window.onmousemove = null;
+		body.onselectstart=null;
 	}
+})
+/*点击图片的逻辑*/
+for(var i = 0 ; i < $(".img").length ; i++){
+	$(".img").eq(i).attr("lable",i)
+}
+$(".img").click(function(){
+	$(".banner li").hide()
+	$(".img").find("span").removeClass("foucs");
+	x = Number($(this).attr("lable"));
+	console.log(x)
+	$(".banner li").eq(x).fadeIn()
+	$(".img").find("span").eq(x).addClass("foucs")
+	xuankuangStatus(x);
 })
 </script>
 </body>

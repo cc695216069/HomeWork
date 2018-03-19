@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jQuery.js"></script>
+<style>
+	*{margin:0;padding:0;}
+  li{list-style:none;}
+  .wrap{
+    width:1900px;
+    margin:100px auto;
+    position:relative;
+    overflow:hidden;
+    border-radius:6px;
+    height:600px;
+  }
+  .wrap ul{
+      width:7600px;
+  }
+  .wrap li{
+      float:left;
+  }
+ .dot{
+	position:absolute;
+	bottom:20px;
+	left:45%;
+}
+.dot li{
+	width:20px;
+	height:3px;
+	display:block;
+	background-color:#fff;
+	border: 1px solid #e3e3e3;
+	margin-right:8px;
+	cursor: pointer;
+}
+.dot li.focus{
+	background-color:#f99;
+}
+#prev,#next{
+    position:absolute;
+    top:45%;
+    cursor:pointer;
+    transition:all .5s;
+    opacity: .7;
+  }
+  #prev:hover,#next:hover{
+    opacity: 1;
+    transform:scale(1.1);
+  }
+  #prev{
+    left:20px;
+  }
+  #next{
+    right:20px;
+  }
+</style>
+</head>
+<body>
+	<div class="wrap">
+      <ul class="liList" style="margin-left:0;">
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/1.jpg" /></li>
+        <li><img src="images/1.jpg" /></li>
+      </ul>
+      <img src="images/l.png" id="prev" alt="">
+      <img src="images/r.png" id="next" alt="">
+      <ul class="dot">
+      </ul>
+    </div>
+<script>
+	 var n = 0; //当前所在的张数
+      var $next = $("#next");
+      var $prev = $("#prev");
+      var $wrap = $(".wrap");
+      var $ul = $(".liList");
+      var $dotWrap = $(".dot")
+      var count = $(".wrap li").length;
+      var isAnimation = false;
+
+      // 初始化小长方形
+      for(var i = 0; i < count; i++){
+        var $newdot = $("<li></li>");
+        $newdot.attr("index",i)
+        $newdot.appendTo($dotWrap)
+      }
+      $dotList = $dotWrap.find("li");
+      $dotList.eq(0).addClass("focus")
+      $dotList.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          n = $(this).attr("index")
+          $ul.animate({
+            marginLeft: -(n * 1900)
+          },function(){
+            isAnimation = false;
+          })
+          updataDotStatus()
+        }
+      })
+      function updataDotStatus(){
+       $dotList.removeClass("focus")
+       $dotList.eq(n).addClass('focus');
+      }
+      $next.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          if(n < count - 1){
+            n++;
+          }
+          else{
+            n = 0;
+          }
+          $ul.animate({
+            marginLeft: -(n * 1900)
+          },function(){
+            isAnimation = false; 
+          })
+          updataDotStatus()
+        }
+      })
+      $prev.click(function(){
+        if(!isAnimation){
+          isAnimation = true;
+          if(n == 0){
+            n = count - 1;
+          }
+          else{
+            n--;
+          }
+          $ul.animate({
+            marginLeft: -(n * 1900)
+          },function(){
+            isAnimation = false;
+          })
+          updataDotStatus();
+        }
+      })
+      var t = setInterval(function(){
+        $next.click()
+      },3000)
+      $wrap.mouseenter(function(){
+        clearInterval(t)
+      })
+      $wrap.mouseleave(function(){
+        t = setInterval(function(){
+          $next.click()
+        },3000)
+      })
+</script>	
+</body>
+</html>
